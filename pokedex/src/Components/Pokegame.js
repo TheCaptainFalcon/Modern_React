@@ -25,11 +25,17 @@ class Pokegame extends Component {
             let randomPokemon = hand2.splice(randomIndex, 1)[0];
             hand1.push(randomPokemon);
         }
+
+        // Exp accumulator to determine winner
+        // Uses exp as empty placeholder that adds the exp from pokemon prop of hands - starting from initial value of 0
+        let exp1 = hand1.reduce((exp, pokemon) => exp + pokemon.base_experience, 0);
+        let exp2 = hand2.reduce((exp, pokemon) => exp + pokemon.base_experience, 0);
+
         return (
             <div>
                 <h1>Pokegame</h1>
-                <Pokedex pokemon={hand1}/>
-                <Pokedex pokemon={hand2}/>
+                <Pokedex pokemon={hand1} exp={exp1} isWinner={exp1 > exp2}/>
+                <Pokedex pokemon={hand2} exp={exp2} isWinner={exp2 > exp1}/>
             </div>
         );
     }

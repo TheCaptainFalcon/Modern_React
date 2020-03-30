@@ -3,3 +3,15 @@
     flex-wrap: wrap;
     justify-content: space-evenly;
   }
+
+  .Pokedex-winner {
+    font-size: 1rem;
+    font-weight: bold;
+    color: green;
+  }
+
+  .Pokedex-loser {
+    font-size: 1rem;
+    font-weight: bold;
+    color: red;
+  }
