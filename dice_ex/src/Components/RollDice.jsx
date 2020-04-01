@@ -55,14 +55,14 @@ class RollDice extends Component {
             die2 = <i className="fas fa-dice-six"></i> 
         };
 
+        // Hot reloading issues - remove after finished
+        console.log('WORKING');
+
         return (  
             <div className="RollDice">
                 <Die 
                 dice1 = {die1}
                 dice2 = {die2}
-                /* Temporary placeholder to see what's going on */
-                dice1Num = {this.state.die1Number}
-                dice2Num = {this.state.die2Number}
                 rollButton = {<button onClick={this.roll.bind(this)}>Roll Dice!</button>}
                 />
             </div>
