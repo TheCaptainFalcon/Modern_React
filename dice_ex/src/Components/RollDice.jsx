@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import './RollDice.css';
+import Die from './Die';
 
 class RollDice extends Component {
     constructor(props) {
@@ -11,17 +12,18 @@ class RollDice extends Component {
     }
 
     roll() {
-        // Roll from 1 - 6
+        // Roll from 1 - 6, two separate versions must be made to make 
+        // the dices have a randomizer function independent of each other
         let dieRandomizer = Math.floor(Math.random() * 6) + 1;
+        let dieRandomizer2 = Math.floor(Math.random() * 6) + 1;
         this.setState({ 
             die1Number : dieRandomizer,
-            die2Number : dieRandomizer,
+            die2Number : dieRandomizer2,
         });
     }
 
     render() { 
         let die1;
-        let die2;
 
         if (this.state.die1Number === 1) {
             die1 = <i className="fas fa-dice-one"></i>
@@ -36,6 +38,8 @@ class RollDice extends Component {
         } if (this.state.die1Number === 6) {
             die1 = <i className="fas fa-dice-six"></i> 
         };
+
+        let die2;
 
         if (this.state.die2Number === 1) {
             die2 = <i className="fas fa-dice-one"></i>
@@ -53,13 +57,14 @@ class RollDice extends Component {
 
         return (  
             <div className="RollDice">
-                <div className="RollDice-1">{die1}</div>
-                <div className="RollDice-2">{die2}</div>
-                <br/>
-                {/* Temporary placeholder to see what's going on */}
-                <p>Die #1 is {this.state.die1Number}</p>
-                <p>Die #2 is {this.state.die2Number}</p>
-                <button onClick={this.roll.bind(this)}>Roll Dice!</button>
+                <Die 
+                dice1 = {die1}
+                dice2 = {die2}
+                /* Temporary placeholder to see what's going on */
+                dice1Num = {this.state.die1Number}
+                dice2Num = {this.state.die2Number}
+                rollButton = {<button onClick={this.roll.bind(this)}>Roll Dice!</button>}
+                />
             </div>
         );
     }
